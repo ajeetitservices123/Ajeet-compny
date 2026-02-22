@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grammar Game App</title>
+    <title>Grammar Game App - Pro Level</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
         body { background-color: #f9f9f9; display: flex; justify-content: center; height: 100vh; }
@@ -12,24 +12,24 @@
         .app-container { width: 100%; max-width: 400px; background: white; position: relative; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
         
         /* Header */
-        .header { background: #fff; padding: 15px; text-align: center; font-weight: bold; font-size: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); z-index: 10; }
+        .header { background: #4A90E2; color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 10; }
         
         /* Screens */
         .screen { display: none; padding: 20px; flex: 1; overflow-y: auto; }
         .screen.active { display: block; }
 
-        /* Level Badges Design (From your screenshots) */
+        /* Level Badges Design */
         .level-container { text-align: center; margin-bottom: 30px; }
         .badge { width: 100px; height: 100px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; font-size: 40px; margin-bottom: 10px; cursor: pointer; transition: transform 0.2s; }
         .badge:active { transform: scale(0.95); }
-        .badge.unlocked { background: linear-gradient(135deg, #FFD700, #FFA500); box-shadow: 0 4px 10px rgba(255, 165, 0, 0.4); color: white; }
-        .badge.locked { background: #e0e0e0; color: #9e9e9e; }
+        .badge.unlocked { background: linear-gradient(135deg, #FFD700, #FFA500); box-shadow: 0 4px 10px rgba(255, 165, 0, 0.4); color: white; border: 4px solid #fff; }
+        .badge.locked { background: #e0e0e0; color: #9e9e9e; border: 4px solid #fff; }
         .level-title { font-weight: bold; font-size: 16px; color: #333; }
 
         /* Card Design */
-        .card { background: white; border-radius: 15px; padding: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; border: 2px solid #f0f0f0; }
-        .card h2 { color: #4A90E2; margin-bottom: 15px; font-size: 22px; }
-        .card p { font-size: 16px; line-height: 1.6; color: #555; margin-bottom: 20px; }
+        .card { background: white; border-radius: 15px; padding: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-align: center; min-height: 280px; display: flex; flex-direction: column; justify-content: center; border: 2px solid #e1e8ed; }
+        .card h2 { color: #4A90E2; margin-bottom: 15px; font-size: 20px; border-bottom: 2px dashed #e1e8ed; padding-bottom: 10px; }
+        .card p { font-size: 16px; line-height: 1.6; color: #444; margin-bottom: 20px; }
         
         /* Options for Quiz */
         .option-btn { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #e0e0e0; border-radius: 8px; background: white; font-size: 16px; cursor: pointer; transition: 0.3s; font-weight: bold; color: #333; }
@@ -39,40 +39,45 @@
 
         /* Controls */
         .controls { display: flex; justify-content: space-between; margin-top: 20px; }
-        .btn { padding: 12px 20px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
-        .btn-next { background: #4A90E2; color: white; width: 100%; box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3); }
+        .btn { padding: 14px 20px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .btn-next { background: #4A90E2; color: white; width: 100%; box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3); transition: 0.3s; }
         .btn-next:disabled { background: #ccc; box-shadow: none; cursor: not-allowed; }
+        .btn-next:active { transform: scale(0.98); }
 
         /* Progress Bar */
-        .progress-bar { width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; margin-bottom: 20px; overflow: hidden; }
-        .progress-fill { height: 100%; background: #4CAF50; width: 0%; transition: width 0.3s; }
+        .progress-bar { width: 100%; height: 10px; background: #e0e0e0; border-radius: 5px; margin-bottom: 25px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #4caf50, #8bc34a); width: 0%; transition: width 0.4s ease; }
+        
+        .counter-text { text-align: center; color: #888; font-size: 14px; margin-bottom: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div class="app-container">
-        <div class="header" id="app-header">Levels</div>
+        <div class="header" id="app-header">Master Classes</div>
 
         <div id="level-screen" class="screen active">
-            <h3 style="text-align:center; margin-bottom:20px;">App: English Grammar</h3>
+            <h3 style="text-align:center; margin-bottom:25px; color: #555;">Select Your Module</h3>
             
             <div class="level-container" onclick="startGame()">
-                <div class="badge unlocked">⭐</div>
-                <div class="level-title">1. Subject-Verb Concord</div>
+                <div class="badge unlocked">👑</div>
+                <div class="level-title">1. Concord Masterclass</div>
+                <p style="font-size: 12px; color: #888; margin-top: 5px;">21 Cards • Beginner to Pro</p>
             </div>
 
             <div class="level-container">
                 <div class="badge locked">🔒</div>
-                <div class="level-title">2. Tenses (Locked)</div>
+                <div class="level-title">2. Tense Warrior (Locked)</div>
             </div>
             
             <div class="level-container">
                 <div class="badge locked">🔒</div>
-                <div class="level-title">3. Prepositions (Locked)</div>
+                <div class="level-title">3. Preposition Ninja (Locked)</div>
             </div>
         </div>
 
         <div id="game-screen" class="screen">
+            <div class="counter-text" id="card-counter">Card 1 / 21</div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progress"></div>
             </div>
@@ -89,42 +94,52 @@
     <audio id="applause-sound" src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3" preload="auto"></audio>
 
     <script>
-        // Game Data: 2 Theory Cards -> 1 Quiz -> 1 Theory -> 1 Quiz
+        // 21 Cards Array: Taking user from Basics to Mastery
         const cardsData = [
-            {
-                type: 'theory',
-                title: 'Welcome to the Game!',
-                content: 'Subject-Verb Concord bahut hi <b>easy</b> aur mazedar hai. Rule simple hai: Agar Subject ek hai (Singular), toh Verb bhi Singular hogi (verb mein s/es lagta hai).'
-            },
-            {
-                type: 'theory',
-                title: 'Singular & Plural Magic',
-                content: '<b>Examples:</b><br><br>Singular: He <b>plays</b> cricket.<br>Plural: They <b>play</b> cricket.<br><br>Dekha kitna <b>thrilling</b> hai? Bas match karna hai!'
-            },
-            {
-                type: 'quiz',
-                title: 'Your Turn!',
-                question: 'The dog ______ fast.',
-                options: ['run', 'runs'],
-                correct: 1 // index of 'runs'
-            },
-            {
-                type: 'theory',
-                title: 'The "And" Team',
-                content: 'Jab do log "and" se judte hain, toh wo ek team (Plural) ban jate hain. Isliye verb bhi plural aayegi.<br><br><b>Example:</b> Rahul and Priya <b>are</b> happy.'
-            },
-            {
-                type: 'quiz',
-                title: 'Quiz Time!',
-                question: 'Rohan and Aman ______ going to school.',
-                options: ['is', 'are'],
-                correct: 1 // index of 'are'
-            },
-            {
-                type: 'theory',
-                title: 'Level Complete! 🎉',
-                content: 'Aapne is basics ko jeet liya hai! <b>Enjoy the process</b> of learning! Naya level ab unlock ho gaya hai.'
-            }
+            // Level 1: Basics
+            { type: 'theory', title: 'Level 1: The Golden Rule 🌟', content: 'Subject-Verb Concord ek bahut hi <b>thrilling game</b> hai! Rule bada <b>easy</b> hai: Singular Subject = Singular Verb (s/es wali), aur Plural Subject = Plural Verb.' },
+            { type: 'quiz', title: 'Quick Check!', question: 'The boy ______ in the park.', options: ['play', 'plays'], correct: 1 },
+            
+            // Level 2: 'And' Rule
+            { type: 'theory', title: 'Level 2: The "And" Team 🤝', content: 'Jab do subjects "and" se judte hain, toh wo plural ban jate hain. Yeh pattern samajhna sach mein <b>enjoyment</b> deta hai!<br><br><b>Example:</b> Ram and Shyam <b>are</b> good friends.' },
+            { type: 'quiz', title: 'Team Test', question: 'My brother and my sister ______ going to Paris.', options: ['is', 'are'], correct: 1 },
+            
+            // Level 3: Combo Twist
+            { type: 'theory', title: 'Level 3: The Combo Twist 🥨', content: 'Kuch cheezein "and" se judne par bhi ek hi idea deti hain (jaise Bread and Butter). Inhe hamesha Singular maante hain. Yeh ek naya <b>thrilling</b> twist hai!<br><br><b>Example:</b> Slow and steady <b>wins</b> the race.' },
+            { type: 'quiz', title: 'Combo Quiz', question: 'Bread and butter ______ my favorite breakfast.', options: ['is', 'are'], correct: 0 },
+            
+            // Level 4: Either/Or
+            { type: 'theory', title: 'Level 4: Either/Or, Neither/Nor ⚖️', content: 'Jab sentence mein Either/Or ya Neither/Nor aaye, toh verb hamesha apne <b>closest neighbor</b> (paas wale subject) ke hisaab se lagti hai. Is trick se sentence banana bahut <b>easy</b> ho jata hai.' },
+            { type: 'quiz', title: 'Neighbor Check', question: 'Neither the manager nor the employees ______ present.', options: ['was', 'were'], correct: 1 },
+            { type: 'quiz', title: 'Trick Check', question: 'Either the players or the coach ______ coming.', options: ['is', 'are'], correct: 0 },
+            
+            // Level 5: Distraction Words
+            { type: 'theory', title: 'Level 5: The Distraction Rule 🙈', content: 'Words jaise "along with", "as well as", "together with" aapko distract karte hain. Inhe ignore karein! Verb hamesha <b>First Subject</b> ke hisaab se aayegi. <b>Enjoy the process</b> of finding the real subject!' },
+            { type: 'quiz', title: 'Focus Test', question: 'The teacher, along with her students, ______ going to the museum.', options: ['is', 'are'], correct: 0 },
+            
+            // Level 6: Indefinite Pronouns
+            { type: 'theory', title: 'Level 6: The "Each & Every" Magic ✨', content: 'Each, Every, Everyone, Someone, Nobody - yeh sab words hamesha Singular hote hain. Inke sath singular verb lagana ek <b>enjoyment</b> bhara kaam hai.' },
+            { type: 'quiz', title: 'Magic Quiz', question: 'Everyone in the class ______ doing well.', options: ['is', 'are'], correct: 0 },
+            
+            // Level 7: Collective Nouns
+            { type: 'theory', title: 'Level 7: Group Words 👨‍👩‍👧‍👦', content: 'Family, Team, Jury - jab yeh ek unit ki tarah kaam karein, toh inhe Singular maano. Yeh bilkul ek <b>game</b> ki tarah set ho jata hai.<br><br><b>Example:</b> The team <b>is</b> winning the match.' },
+            { type: 'quiz', title: 'Team Quiz', question: 'The jury ______ given its final verdict.', options: ['has', 'have'], correct: 0 },
+            
+            // Level 8: Time, Distance, Money
+            { type: 'theory', title: 'Level 8: Time, Money, Distance ⏳', content: 'Jab hum specific time, money ya distance ki baat karte hain, toh wo ek unit ban jata hai (Singular). Is logic ko apply karna bada <b>easy</b> hai!<br><br><b>Example:</b> Ten miles <b>is</b> a long distance.' },
+            { type: 'quiz', title: 'Distance Check', question: 'Five thousand rupees ______ a big amount.', options: ['is', 'are'], correct: 0 },
+            
+            // Level 9: Number Game
+            { type: 'theory', title: 'Level 9: The Number Game 🔢', content: '"A number of" hamesha Plural hota hai (Jaise: A number of boys are playing). Lekin "The number of" hamesha Singular hota hai. Is choti si trick ko seekhne mein bada <b>enjoyment</b> aayega!' },
+            { type: 'quiz', title: 'Number Quiz', question: 'A number of students ______ absent today.', options: ['was', 'were'], correct: 1 },
+            { type: 'quiz', title: 'Number Trick Quiz', question: 'The number of cars ______ increasing daily.', options: ['is', 'are'], correct: 0 },
+            
+            // Level 10: Fake Plurals
+            { type: 'theory', title: 'Level 10: Fake Plurals 🎭', content: 'Kuch words ke end mein "s" hota hai par wo darasal Singular hote hain (jaise News, Physics, Mathematics, Billiards). Inko pehchanna ek <b>thrilling</b> task hai!' },
+            { type: 'quiz', title: 'Final Quiz', question: 'The news ______ good today!', options: ['is', 'are'], correct: 0 },
+            
+            // Mastery Complete
+            { type: 'theory', title: 'Mastery Complete! 🏆', content: 'Wah! Aapne Subject-Verb Concord ka pura <b>game</b> jeet liya. Ab aap is topic ke Master ban chuke hain! Aise hi aage badhte rahein aur padhai mein <b>enjoy the process</b>!' }
         ];
 
         let currentCardIndex = 0;
@@ -133,7 +148,7 @@
         function startGame() {
             document.getElementById('level-screen').classList.remove('active');
             document.getElementById('game-screen').classList.add('active');
-            document.getElementById('app-header').innerText = 'Playing Game...';
+            document.getElementById('app-header').innerText = 'Playing Masterclass...';
             currentCardIndex = 0;
             renderCard();
         }
@@ -144,24 +159,25 @@
             const nextBtn = document.getElementById('next-btn');
             quizAnswered = false;
 
-            // Update Progress Bar
+            // Update Progress Bar & Counter
             let progress = ((currentCardIndex + 1) / cardsData.length) * 100;
             document.getElementById('progress').style.width = progress + '%';
+            document.getElementById('card-counter').innerText = `Card ${currentCardIndex + 1} / ${cardsData.length}`;
 
             let cardHTML = `<div class="card"><h2>${cardData.title}</h2>`;
 
             if (cardData.type === 'theory') {
                 cardHTML += `<p>${cardData.content}</p>`;
-                nextBtn.innerText = currentCardIndex === cardsData.length - 1 ? 'Finish Game 🏆' : 'Next 👉';
+                nextBtn.innerText = currentCardIndex === cardsData.length - 1 ? 'Claim Trophy 🏆' : 'Next 👉';
                 nextBtn.disabled = false;
             } 
             else if (cardData.type === 'quiz') {
-                cardHTML += `<p><b>${cardData.question}</b></p>`;
+                cardHTML += `<p style="font-size: 18px; color: #111;"><b>${cardData.question}</b></p>`;
                 cardData.options.forEach((opt, index) => {
                     cardHTML += `<button class="option-btn" onclick="checkAnswer(${index}, ${cardData.correct}, this)">${opt}</button>`;
                 });
-                nextBtn.disabled = true; // Block Next button until correct answer
-                nextBtn.innerText = 'Answer to unlock Next';
+                nextBtn.disabled = true;
+                nextBtn.innerText = 'Select correct answer';
             }
 
             cardHTML += `</div>`;
@@ -169,21 +185,19 @@
         }
 
         function checkAnswer(selectedIndex, correctIndex, btnElement) {
-            if (quizAnswered) return; // Prevent multiple clicks
+            if (quizAnswered) return; 
 
-            const buttons = document.querySelectorAll('.option-btn');
-            
             if (selectedIndex === correctIndex) {
                 btnElement.classList.add('correct');
                 document.getElementById('next-btn').disabled = false;
-                document.getElementById('next-btn').innerText = 'Next 👉';
+                document.getElementById('next-btn').innerText = 'Awesome! Next 👉';
                 quizAnswered = true;
                 
-                // Chhoti si vibration correct aane par
+                // Light vibration for correct answer
                 if (navigator.vibrate) navigator.vibrate(50);
             } else {
                 btnElement.classList.add('wrong');
-                // Vibrate for wrong answer
+                // Double vibration for wrong answer
                 if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
             }
         }
@@ -198,29 +212,29 @@
         }
 
         function finishLevel() {
-            // Vibrate phone (pattern: vibrate, pause, vibrate)
+            // Success vibration pattern
             if (navigator.vibrate) {
-                navigator.vibrate([200, 100, 200, 100, 400]);
+                navigator.vibrate([200, 100, 200, 100, 400, 100, 600]);
             }
             
             // Play Applause Sound
             const sound = document.getElementById('applause-sound');
             sound.play();
 
-            alert("Wah! Aapne yeh level paar kar liya! Enjoyment aur learning aise hi chalti rahegi!");
+            alert("Congratulations! Aap ab Subject-Verb Concord ke Master hain! Yeh sach mein ek thrilling enjoyment tha!");
             
-            // Go back to home
+            // Back to levels screen
             document.getElementById('game-screen').classList.remove('active');
             document.getElementById('level-screen').classList.add('active');
-            document.getElementById('app-header').innerText = 'Levels';
+            document.getElementById('app-header').innerText = 'Master Classes';
             
-            // Visual feedback: Change locked badge to unlocked (dummy logic for example)
+            // Unlock next level visually
             const badges = document.querySelectorAll('.badge');
             badges[1].classList.remove('locked');
             badges[1].classList.add('unlocked');
             badges[1].innerHTML = '⭐';
-            badges[1].nextElementSibling.innerText = '2. Tenses (Unlocked!)';
+            badges[1].nextElementSibling.innerText = '2. Tense Warrior (Unlocked!)';
         }
     </script>
 </body>
-            </html>
+</html>
