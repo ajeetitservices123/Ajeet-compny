@@ -1,79 +1,78 @@
-<!DOCTYPE html>
+            <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Force X Group Prep</title>
+    <title>Learning App - English Notes</title>
     <style>
-        /* Basic App Styling */
-        body {
+        /* Basic Reset & App-like styling */
+        * {
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f7f6;
+        }
+        body {
+            background-color: #f0f4f8;
             color: #333;
-            padding-bottom: 60px; /* Space for bottom nav */
+            /* Bottom padding so content isn't hidden behind the nav bar */
+            padding-bottom: 70px; 
         }
         
-        /* Header */
-        header {
-            background-color: #0f4c81;
+        /* Top App Bar */
+        .app-header {
+            background: #4A90E2;
             color: white;
-            padding: 15px;
-            text-align: center;
+            padding: 16px;
             font-size: 20px;
             font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* Screen Containers */
-        .screen {
-            display: none; /* Hidden by default */
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-        .active-screen {
-            display: block; /* Shows the active screen */
+        /* Content Area */
+        .content-container {
+            padding: 16px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Cards for content */
+        /* Card Design */
         .card {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            color: #4A90E2;
+            font-size: 22px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #e1e8ed;
+            padding-bottom: 8px;
+        }
+        .card p {
+            line-height: 1.6;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .card ul {
+            margin-left: 20px;
             margin-bottom: 15px;
+            line-height: 1.6;
         }
 
-        /* Test Section Styling */
-        .question {
-            margin-bottom: 15px;
+        /* Example Box to make examples stand out */
+        .example-box {
+            background: #e8f0fe;
+            border-left: 4px solid #4A90E2;
+            padding: 12px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .highlight-verb {
+            color: #d32f2f;
             font-weight: bold;
-        }
-        .options {
-            list-style-type: none;
-            padding: 0;
-        }
-        .options li {
-            margin-bottom: 10px;
-        }
-        button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-        }
-        button:active {
-            background-color: #218838;
         }
 
         /* Bottom Navigation Bar */
@@ -81,144 +80,93 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: white;
+            background: #ffffff;
             display: flex;
             justify-content: space-around;
             padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
         }
         .nav-item {
             text-align: center;
-            font-size: 14px;
-            color: #555;
-            cursor: pointer;
             flex: 1;
+            cursor: pointer;
+            color: #888;
+            font-size: 12px;
         }
         .nav-item.active {
-            color: #0f4c81;
+            color: #4A90E2;
             font-weight: bold;
+        }
+        .nav-icon {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 4px;
         }
     </style>
 </head>
 <body>
 
-    <header id="app-header">Air Force X And Y Group Prep</header>
-
-    <div id="home" class="screen active-screen">
-        <div class="card">
-            <h2>Welcome Air force y group aspirants ✈️</h2>
-            <p>Ready to start your journey? Learning here is an easy and thrilling game. Dive into the theory, take the quizzes, and enjoy the process of leveling up your knowledge every single day.</p>
-        </div>
-        <div class="card">
-            <h3>Daily Target</h3>
-            <p>✅ Read English Synonyms<br>✅ Complete 1 Reasoning Quiz</p>
-        </div>
+    <div class="app-header">
+        English Notes
     </div>
 
-    <div id="theory" class="screen">
+    <div class="content-container">
+        
         <div class="card">
-            <h2>Syllabus & Theory</h2>
-            <p>Mastering the concepts is the first step to enjoyment and success.</p>
-        </div>
-        <div class="card">
-            <h3>English</h3>
-            <p><strong>Subject-Verb Agreement:</strong> A singular subject takes a singular verb, and a plural subject takes a plural verb. It's an easy rule to remember!</p>
-        </div>
-        <div class="card">
-            <h3>RAGA (Reasoning & General Awareness)</h3>
-            <p><strong>Number Series:</strong> Look for the pattern. It's like a fun puzzle game. For example: 2, 4, 6, 8... the next is 10 (+2 each time).</p>
-        </div>
-    </div>
+            <h2>📘 Subject-Verb Concord (Basics)</h2>
+            <p>English grammar ka yeh topic ek <b>thrilling game</b> ki tarah hai! Iska basic concept bahut <b>easy</b> hai: Aapko bas Subject aur Verb ko ek doosre ke sath match karna hai. Learning ke is safar mein <b>enjoy the process</b>!</p>
 
-    <div id="test" class="screen">
-        <div class="card">
-            <h2>Thrilling Test Zone</h2>
-            <p>Test your skills and enjoy the challenge!</p>
-            <form id="quiz-form">
-                <div class="question">1. What is the synonym of 'BRAVE'?</div>
-                <ul class="options">
-                    <li><input type="radio" name="q1" value="a"> A) Cowardly</li>
-                    <li><input type="radio" name="q1" value="b"> B) Courageous</li>
-                    <li><input type="radio" name="q1" value="c"> C) Fearful</li>
-                </ul>
+            <h3>1. The Golden Matching Rule</h3>
+            <p>Sentence mein balance banaye rakhne ke liye ek simple niyam follow karein. Ise seekhna sach mein bada <b>enjoyment</b> deta hai:</p>
+            <ul>
+                <li>Agar <b>Subject Singular</b> (Ek vachan) hai, toh uski <b>Verb bhi Singular</b> hogi (verb ke end mein <i>-s</i> ya <i>-es</i> lagate hain).</li>
+                <li>Agar <b>Subject Plural</b> (Bahu vachan) hai, toh uski <b>Verb bhi Plural</b> hogi (isme <i>-s</i> nahi lagta, base form use hoti hai).</li>
+            </ul>
+            
+            <div class="example-box">
+                <b>Examples dekhiye:</b><br><br>
+                <i>Singular:</i> The student <span class="highlight-verb">reads</span> a book. (Student kitaab padhta hai.)<br>
+                <i>Plural:</i> The students <span class="highlight-verb">read</span> a book. (Students kitaab padhte hain.)
+            </div>
 
-                <div class="question">2. Complete the series: 5, 10, 15, 20, ?</div>
-                <ul class="options">
-                    <li><input type="radio" name="q2" value="a"> A) 22</li>
-                    <li><input type="radio" name="q2" value="b"> B) 24</li>
-                    <li><input type="radio" name="q2" value="c"> C) 25</li>
-                </ul>
+            <h3>2. The "And" Magic Team</h3>
+            <p>Jab do alag-alag subjects word <b>"and"</b> se judte hain, toh wo milkar ek plural team ban jate hain. Is trick ko use karna bahut <b>easy</b> hai.</p>
+            <div class="example-box">
+                <b>Example:</b> Rahul and Priya <span class="highlight-verb">are</span> going to the market.<br>
+                <i>(Dono milkar plural ban gaye, isliye 'is' ki jagah 'are' lagaya.)</i>
+            </div>
 
-                <button type="button" onclick="submitTest()">Submit Answers</button>
-            </form>
-            <div id="test-result" style="margin-top: 15px; font-weight: bold; color: #0f4c81;"></div>
-        </div>
-    </div>
+            <h3>3. "Each aur Every" Ka Rule</h3>
+            <p>Dhyan rahe, words jaise <i>Each, Every, Everyone, Somebody</i> hamesha ek unit (Singular) maane jate hain. Inke sath hamesha singular verb hi lagani chahiye.</p>
+            <div class="example-box">
+                <b>Example:</b> Everyone <span class="highlight-verb">is</span> happy today.<br>
+                <i>(Yahan 'Everyone' singular hai, isliye 'is' ka use hua hai.)</i>
+            </div>
 
-    <div id="profile" class="screen">
-        <div class="card">
-            <h2>Your Profile</h2>
-            <p><strong>Name:</strong> Candidate</p>
-            <p><strong>Target:</strong> Air Force Y Group</p>
-            <p><strong>Current Status:</strong> Ready to win!</p>
+            <p style="margin-top: 15px;">In basic rules ko dhyan mein rakh kar aap koi bhi sentence bina galti ke bana sakte hain. Grammar ke is <b>game</b> ko jeetna ab aapke baayein hath ka khel hai!</p>
         </div>
-        <div class="card">
-            <h3>Achievements</h3>
-            <p>🏆 5 Days Learning Streak</p>
-            <p>⭐ English Grammar Novice</p>
-        </div>
+
     </div>
 
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="switchScreen('home', this)">🏠<br>Home</div>
-        <div class="nav-item" onclick="switchScreen('theory', this)">📚<br>Theory</div>
-        <div class="nav-item" onclick="switchScreen('test', this)">✍️<br>Test</div>
-        <div class="nav-item" onclick="switchScreen('profile', this)">👤<br>Profile</div>
+        <div class="nav-item active">
+            <span class="nav-icon">📖</span>
+            English
+        </div>
+        <div class="nav-item">
+            <span class="nav-icon">📐</span>
+            Math
+        </div>
+        <div class="nav-item">
+            <span class="nav-icon">🌍</span>
+            GK
+        </div>
+        <div class="nav-item">
+            <span class="nav-icon">🧠</span>
+            Reasoning
+        </div>
     </div>
 
-    <script>
-        // Function to easily switch between screens
-        function switchScreen(screenId, navElement) {
-            // Hide all screens
-            const screens = document.querySelectorAll('.screen');
-            screens.forEach(screen => {
-                screen.classList.remove('active-screen');
-            });
-
-            // Show the selected screen
-            document.getElementById(screenId).classList.add('active-screen');
-
-            // Update active state on the bottom navigation
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.classList.remove('active');
-            });
-            navElement.classList.add('active');
-            
-            // Change header title dynamically
-            const header = document.getElementById('app-header');
-            if(screenId === 'home') header.innerText = 'Air Force Y Group Prep';
-            if(screenId === 'theory') header.innerText = 'Study Materials';
-            if(screenId === 'test') header.innerText = 'Mock Tests';
-            if(screenId === 'profile') header.innerText = 'My Progress';
-        }
-
-        // Simple and fun test grading logic
-        function submitTest() {
-            let score = 0;
-            const form = document.forms['quiz-form'];
-            
-            // Check answers
-            if (form['q1'].value === 'b') score++;
-            if (form['q2'].value === 'c') score++;
-
-            // Display results
-            const resultDiv = document.getElementById('test-result');
-            resultDiv.innerHTML = `Awesome job! You scored ${score} out of 2. Keep up the enjoyment and keep practicing!`;
-            
-            // Clear the form for the next game
-            form.reset();
-        }
-    </script>
 </body>
                 </html>
